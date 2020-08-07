@@ -1,4 +1,3 @@
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -6,7 +5,6 @@ var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
 // GIVEN I need a new, secure password
 // WHEN I click the button to generate a password
-
 
 // WHEN I answer each prompt
 // THEN my input should be validated and at least one character type should be selected
@@ -17,20 +15,62 @@ generateBtn.addEventListener("click", writePassword);
 
 // WHEN prompted for the length of the password
 var options = {
-  length: "",
   special: "!@#$%&?",
-  numeric: "123456789",
+  numeric: "0123456789",
   lowercase: "abcdefghijklmnopqrstuvwxyz",
   uppercase: "abcdefghijklmnopqrstuvwxyz".toUpperCase(),
-  
-}; 
-  
-options.special = confirm("Would you like to use special characters?");
-options.numeric = confirm("Would you like to use numeric characters?");
-options.uppercase = confirm("Would you like to use uppercase characters?");
-options.lowercase = confirm("Would you like to use lowercase characters?");
+};
 
-  while(options.special === false && options.numeric === false && options.uppercase === false && options.lowercase === false) {
+function generatePassword() {
+  debugger
+  var passwordCharacters = {},
+
+    length = parseInt(
+      prompt(
+        "How many characters would you like your password to be? (min = 8; max = 128)"
+      )
+    );
+  console.log(length);
+  while (length < "8" || length > "128") {
+    alert("You must enter a value between 8 and 128.");
+    length = parseInt(
+      prompt(
+        "How many characters would you like your password to be? (min = 8; max = 128)"
+      )
+    );
+  }
+
+  special = confirm("Would you like to use special characters?");
+  if (special) {
+    passwordCharacters += special;
+  }
+
+  numeric = confirm("Would you like to use numeric characters?");
+  if (numeric) {
+    passwordCharacters += numeric;
+  }
+
+  lowercase = confirm("Would you like to use lowercase characters?");
+  if (lowercase) {
+    passwordCharacters += lowercase;
+  }
+
+  uppercase = confirm("Would you like to use uppercase characters?");
+  if (uppercase) {
+    passwordCharacters += uppercase;
+  }
+debugger
+  var password = {};
+  for (let i = 0; i < length; i++) {
+    password +=
+      passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+  }
+  while (
+    options.special === false &&
+    options.numeric === false &&
+    options.uppercase === false &&
+    options.lowercase === false
+  ) {
     alert("You must choose at least one parameter");
     options.special = confirm("Would you like to use special characters?");
     options.numeric = confirm("Would you like to use numeric characters?");
@@ -39,38 +79,15 @@ options.lowercase = confirm("Would you like to use lowercase characters?");
   }
 
 
-  
-function generatePassword() {
-  var passwordCharacters = "",
+  for (let i = 0; i < length; i++) {
+    password +=
+      passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+  }
 
-  var length = parseInt(
-    prompt("How many characters would you like your password to be? (min = 8; max = 128)"));
-    console.log(length);
-    while (length < "8" || length > "128") {
-      alert("You must enter a value.");
-      var length = parseInt(
-        prompt("How many characters would you like your password to be? (min = 8; max = 128)"));
-    }
+  return password;
   
-    if (options.special) {
-      passwordCharacters += options.special;
-      
-    }
-  
-    if (options.numeric) {
-      passwordCharacters += options.numeric;
-    }
-  
-    if (options.uppercase) {
-      passwordCharacters += options.uppercase;
-    }
-  
-    if (options.lowercase) {
-      passwordCharacters += options.lowercase;
-    }
-  }    
+}
 
-  password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
 
 // Write password to the #password input
 function writePassword() {
@@ -79,4 +96,3 @@ function writePassword() {
 
   passwordText.value = password;
 }
-  
