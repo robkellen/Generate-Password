@@ -21,7 +21,7 @@ function generatePassword() {
       "How many characters would you like your password to be? (min = 8; max = 128)"
     )
   );
- 
+ debugger
   while (length < "8" || length > "128") {
     alert("You must enter a value between 8 and 128.");
     length = parseInt(
@@ -43,19 +43,19 @@ function generatePassword() {
 
   var password = "";
   for (let i = 0; i < length; i++) {
-    if (special) {
+    if (special, true) {
       passwordCharacters += special;
     }
 
-    if (numeric) {
+    if (numeric, true) {
       passwordCharacters += numeric;
     }
 
-    if (lowercase) {
+    if (lowercase, true) {
       passwordCharacters += lowercase;
     }
 
-    if (uppercase) {
+    if (uppercase, true) {
       passwordCharacters += uppercase;
     }
 
