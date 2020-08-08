@@ -15,13 +15,13 @@ function generatePassword() {
   var passwordCharacters = "";
   var password = "";
   var length = "";
-//Prompting user to enter desired password length
+  //Prompting user to enter desired password length
   length = parseInt(
     prompt(
       "How many characters would you like your password to be? (min = 8; max = 128)"
     )
   );
- debugger
+  debugger;
   while (length < "8" || length > "128") {
     alert("You must enter a value between 8 and 128.");
     length = parseInt(
@@ -30,33 +30,33 @@ function generatePassword() {
       )
     );
   }
-
+debugger
   special = confirm("Would you like to use special characters?");
   numeric = confirm("Would you like to use numeric characters?");
   lowercase = confirm("Would you like to use lowercase characters?");
   uppercase = confirm("Would you like to use uppercase characters?");
 
-  var special = "!@#$%&?";
-  var numeric = "0123456789";
-  var lowercase = "abcdefghijklmnopqrstuvwxyz";
-  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWRXYZ";
+  var specialChar = "!@#$%&?";
+  var numericChar = "0123456789";
+  var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
+  var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWRXYZ";
 
   var password = "";
   for (let i = 0; i < length; i++) {
-    if (special, true) {
-      passwordCharacters += special;
+    if (special) {
+      passwordCharacters += specialChar;
     }
 
-    if (numeric, true) {
-      passwordCharacters += numeric;
+    if (numeric) {
+      passwordCharacters += numericChar;
     }
 
-    if (lowercase, true) {
-      passwordCharacters += lowercase;
+    if (lowercase) {
+      passwordCharacters += lowercaseChar;
     }
 
-    if (uppercase, true) {
-      passwordCharacters += uppercase;
+    if (uppercase) {
+      passwordCharacters += uppercaseChar;
     }
 
     if (
